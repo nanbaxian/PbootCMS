@@ -131,8 +131,7 @@ class IndexController extends Controller
         
         // 判断数据库写入权限
         if ((get_db_type() == 'sqlite') && ! is_writable(ROOT_PATH . $this->config('database.dbname'))) {
-            json(0,ROOT_PATH . $this->config('database.dbname').', '.get_db_type());
-            //json(0, '数据库目录写入权限不足！');
+            json(0, '数据库目录写入权限不足！');
         }
         
         if (! ! $login = $this->model->login($where)) {
